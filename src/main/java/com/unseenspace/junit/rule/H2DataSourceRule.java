@@ -58,7 +58,6 @@ public class H2DataSourceRule extends ExternalResource {
      * Convenience method for getDataSource().getConnection();
      *
      * @return a new connection
-     * @throws SQLException
      */
     public Connection getConnection() throws SQLException {
         return dataSource.getConnection();
