@@ -142,14 +142,15 @@ public class JettyRule extends ExternalResource {
         /**
          * Maven based project assumed for sensible defaults
          *
+         * @param aClass a class that is in the your current project
          * @return this for chaining
          */
-        public Builder webapp() {
-            return webapp(false);
+        public Builder webapp(Class<?> aClass) {
+            return webapp(false, aClass);
         }
 
-        public Builder webapp(boolean isTestPath) {
-            return webapp(Class.class.getResource("/.").toString() + "../../src/" + (isTestPath ? "test" : "main") + "/webapp");
+        public Builder webapp(boolean isTestPath, Class<?> aClass) {
+            return webapp(aClass.getResource("/.").toString() + "../../src/" + (isTestPath ? "test" : "main") + "/webapp");
         }
 
         public Builder webapp(String path) {

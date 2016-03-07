@@ -31,7 +31,7 @@ public class JettyRuleTest {
 
     @ClassRule
     public static JettyRule jettyRule = JettyRule.builder()
-            .webapp(true)
+            .webapp(true, JettyRuleTest.class)
             .jars()
             .jndi().jndi("dataSource", dataSource)
             .build();
