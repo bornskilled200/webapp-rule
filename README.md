@@ -2,7 +2,7 @@
 
 Simple rules to reduce boilerplate when integration testing for web apps.
 
-```
+```java
 public class IntegrationTest {
   public static H2DataSourceRule dataSourceRule = new H2DataSourceRule("test");
 
@@ -21,5 +21,10 @@ public class IntegrationTest {
   
   @Rule
   public HtmlUnitRule htmlUnitRule = new HtmlUnitRule();
+  
+  @Test
+  public void testConnection() {
+    assertThat(htmlUnitRule.getWebClient().getPage(jettyRule.getUrl()).getWebResponse().getStatusCode(), is(200)));
+  }
 }
 ```
